@@ -1,0 +1,146 @@
+[gd_scene load_steps=11 format=3 uid="uid://bcjby722onhxm"]
+
+[ext_resource type="Script" uid="uid://7lbplidmwdns" path="res://Levels/WakeUp/wake_up.gd" id="1_i8dnc"]
+[ext_resource type="Texture2D" uid="uid://dejpnffvj5n2o" path="res://Resources/Assets/Background/banner01.png" id="2_4v1wt"]
+[ext_resource type="PackedScene" uid="uid://34e6h2w8t5dq" path="res://Levels/WakeUp/clock.tscn" id="2_63qqd"]
+[ext_resource type="Theme" uid="uid://c32ibgc7edy2i" path="res://Resources/order_font_theme.tres" id="3_63qqd"]
+[ext_resource type="Texture2D" uid="uid://bna42fwc0at31" path="res://Levels/WakeUp/bedroom/suimin_man.png" id="4_wpjsc"]
+
+[sub_resource type="Gradient" id="Gradient_3tm3s"]
+offsets = PackedFloat32Array(0, 0.649123, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.0614035, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xs5io"]
+gradient = SubResource("Gradient_3tm3s")
+width = 180
+height = 180
+fill = 1
+fill_from = Vector2(0.502, 0.512)
+fill_to = Vector2(0.821, 0.175)
+
+[sub_resource type="Animation" id="Animation_3tm3s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer2/PointLight2D:texture:width")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [180]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer2/PointLight2D:texture:height")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [180]
+}
+
+[sub_resource type="Animation" id="Animation_35rrl"]
+resource_name = "blinking"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer2/PointLight2D:texture:width")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [150, 250]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer2/PointLight2D:texture:height")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [150, 250]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xs5io"]
+_data = {
+&"RESET": SubResource("Animation_3tm3s"),
+&"blinking": SubResource("Animation_35rrl")
+}
+
+[node name="WakeUp" type="Node2D"]
+script = ExtResource("1_i8dnc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="BackgroundTexture" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -178.0
+offset_top = -91.0
+offset_right = 159.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_4v1wt")
+
+[node name="BackgroundTexture2" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_4v1wt")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 424.0
+offset_top = 552.0
+offset_right = 777.0
+offset_bottom = 662.0
+theme = ExtResource("3_63qqd")
+text = "WAKE UP"
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="CanvasModulate" type="CanvasModulate" parent="CanvasLayer2"]
+color = Color(0, 0, 0, 1)
+
+[node name="Person" type="Sprite2D" parent="CanvasLayer2"]
+position = Vector2(613, 337)
+scale = Vector2(0.641586, 0.641586)
+texture = ExtResource("4_wpjsc")
+
+[node name="PointLight2D" type="PointLight2D" parent="CanvasLayer2"]
+position = Vector2(690, 220)
+range_layer_min = -1
+range_layer_max = -1
+texture = SubResource("GradientTexture2D_xs5io")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xs5io")
+}
+autoplay = "blinking"
+
+[node name="Clock" parent="." instance=ExtResource("2_63qqd")]
+visible = false
+position = Vector2(168, 223)
+
+[node name="ClockTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="ClockTimer" to="." method="_on_clock_timer_timeout"]
