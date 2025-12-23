@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://clspvqkkdpea1"]
+
+[ext_resource type="Texture2D" uid="uid://dejpnffvj5n2o" path="res://Resources/Assets/Background/banner01.png" id="1_h6t7g"]
+[ext_resource type="Script" uid="uid://vs08s5nbjejq" path="res://Levels/Brush/brush.gd" id="1_oegyd"]
+[ext_resource type="Theme" uid="uid://c32ibgc7edy2i" path="res://Resources/order_font_theme.tres" id="2_h8dp0"]
+[ext_resource type="Texture2D" uid="uid://cfk63ifsisjy" path="res://Levels/Brush/Assets/ha_kyousei_man_ura.png" id="3_8tr2f"]
+[ext_resource type="Texture2D" uid="uid://dc522ol02oe41" path="res://Levels/Brush/Assets/handbrushha_hamigaki_boy.png" id="4_oegyd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i6p4u"]
+size = Vector2(291.28857, 120.9588)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oegyd"]
+size = Vector2(81, 46)
+
+[node name="Brush" type="Node2D"]
+script = ExtResource("1_oegyd")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="BackgroundTexture" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -178.0
+offset_top = -91.0
+offset_right = 159.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_h6t7g")
+
+[node name="BackgroundTexture2" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_h6t7g")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 65.0
+offset_top = 552.0
+offset_right = 1218.0
+offset_bottom = 662.0
+theme = ExtResource("2_h8dp0")
+text = "BRUSH THE TEETH"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HaKyouseiManUra" type="Sprite2D" parent="."]
+position = Vector2(673.5, 281.25043)
+scale = Vector2(0.8101933, 0.8101933)
+texture = ExtResource("3_8tr2f")
+
+[node name="MouthArea2D" type="Area2D" parent="HaKyouseiManUra"]
+position = Vector2(1.8514099, 67.575935)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HaKyouseiManUra/MouthArea2D"]
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_i6p4u")
+
+[node name="HandBrush" type="Sprite2D" parent="."]
+position = Vector2(504.5, 427.25043)
+texture = ExtResource("4_oegyd")
+offset = Vector2(90, 0)
+
+[node name="BrushArea2D" type="Area2D" parent="HandBrush"]
+position = Vector2(197, -79)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HandBrush/BrushArea2D"]
+position = Vector2(3.5, 2)
+shape = SubResource("RectangleShape2D_oegyd")

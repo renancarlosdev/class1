@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwvytv0vgvm7c"
-path="res://.godot/imported/neoki_man.png-9cfd88247fbbc5c0a2c1321699b011f5.ctex"
+uid="uid://bty1vtp0ok6jc"
+path="res://.godot/imported/fx2.png-ce25f11fcd964b4a0e0c558104501d37.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/WakeUp/bedroom/neoki_man.png"
-dest_files=["res://.godot/imported/neoki_man.png-9cfd88247fbbc5c0a2c1321699b011f5.ctex"]
+source_file="res://Levels/WakeUp/Assets/fx2.png"
+dest_files=["res://.godot/imported/fx2.png-ce25f11fcd964b4a0e0c558104501d37.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0h6ai0u4ks4m"
-path="res://.godot/imported/neoki_boy_sawayaka.png-ea57190617fe20a124e8314a75a4c616.ctex"
+uid="uid://d0bcvr1p2kn1"
+path="res://.godot/imported/eye08_ku.png-551ca30ce3552055bd7933a69648350f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/WakeUp/bedroom/neoki_boy_sawayaka.png"
-dest_files=["res://.godot/imported/neoki_boy_sawayaka.png-ea57190617fe20a124e8314a75a4c616.ctex"]
+source_file="res://Levels/WakeUp/Assets/eye08_ku.png"
+dest_files=["res://.godot/imported/eye08_ku.png-551ca30ce3552055bd7933a69648350f.ctex"]
 
 [params]
 

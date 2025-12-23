@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://34e6h2w8t5dq"]
 
-[ext_resource type="Texture2D" uid="uid://dig0b4h6ogirr" path="res://Levels/WakeUp/bedroom/mezamashidokei.png" id="1_kvtdb"]
+[ext_resource type="Texture2D" uid="uid://dig0b4h6ogirr" path="res://Levels/WakeUp/Assets/mezamashidokei.png" id="1_kvtdb"]
 [ext_resource type="Script" uid="uid://cafh1ns16j6b3" path="res://Levels/WakeUp/clock.gd" id="2_kvtdb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_63qqd"]

@@ -1,10 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://bcjby722onhxm"]
+[gd_scene load_steps=26 format=3 uid="uid://bcjby722onhxm"]
 
 [ext_resource type="Script" uid="uid://7lbplidmwdns" path="res://Levels/WakeUp/wake_up.gd" id="1_i8dnc"]
 [ext_resource type="Texture2D" uid="uid://dejpnffvj5n2o" path="res://Resources/Assets/Background/banner01.png" id="2_4v1wt"]
 [ext_resource type="PackedScene" uid="uid://34e6h2w8t5dq" path="res://Levels/WakeUp/clock.tscn" id="2_63qqd"]
 [ext_resource type="Theme" uid="uid://c32ibgc7edy2i" path="res://Resources/order_font_theme.tres" id="3_63qqd"]
-[ext_resource type="Texture2D" uid="uid://bna42fwc0at31" path="res://Levels/WakeUp/bedroom/suimin_man.png" id="4_wpjsc"]
+[ext_resource type="Texture2D" uid="uid://bna42fwc0at31" path="res://Levels/WakeUp/Assets/suimin_man.png" id="4_wpjsc"]
+[ext_resource type="Texture2D" uid="uid://dq30kt0es0ta8" path="res://Levels/WakeUp/Assets/bell.png" id="6_1wkb2"]
+[ext_resource type="Texture2D" uid="uid://q4sua02wohjm" path="res://Levels/WakeUp/Assets/eye05_close1.png" id="6_f3eur"]
+[ext_resource type="Texture2D" uid="uid://bty1vtp0ok6jc" path="res://Levels/WakeUp/Assets/fx2.png" id="6_rmc2i"]
+[ext_resource type="Texture2D" uid="uid://clacoo8rqcnur" path="res://Levels/WakeUp/Assets/eye07_sen.png" id="7_xjcfv"]
+[ext_resource type="Texture2D" uid="uid://d0bcvr1p2kn1" path="res://Levels/WakeUp/Assets/eye08_ku.png" id="8_yxd7n"]
+[ext_resource type="Texture2D" uid="uid://o51xcwg86hf3" path="res://Levels/WakeUp/Assets/eye13_circle1.png" id="9_qtgra"]
+[ext_resource type="Texture2D" uid="uid://sq56hofihofb" path="res://Levels/WakeUp/Assets/button_round_depth_border.png" id="11_rmc2i"]
+[ext_resource type="Texture2D" uid="uid://deodhb46dq6v8" path="res://Levels/WakeUp/Assets/ha3_clean.png" id="14_rmc2i"]
+[ext_resource type="Texture2D" uid="uid://dsn2oaym4651" path="res://Levels/WakeUp/Assets/cooking_chef.png" id="14_ud8s7"]
 
 [sub_resource type="Gradient" id="Gradient_3tm3s"]
 offsets = PackedFloat32Array(0, 0.649123, 1)
@@ -79,6 +88,81 @@ _data = {
 &"blinking": SubResource("Animation_35rrl")
 }
 
+[sub_resource type="Animation" id="Animation_yxd7n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../BellFx:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_riw8a"]
+resource_name = "fx_blink"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../BellFx:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.36666667, 0.56666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qtgra"]
+_data = {
+&"RESET": SubResource("Animation_yxd7n"),
+&"fx_blink": SubResource("Animation_riw8a")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xjcfv"]
+radius = 353.47
+
+[sub_resource type="Animation" id="Animation_22pxx"]
+resource_name = "rotating"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.58343947, -0.4347142]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ud8s7"]
+_data = {
+&"rotating": SubResource("Animation_22pxx")
+}
+
 [node name="WakeUp" type="Node2D"]
 script = ExtResource("1_i8dnc")
 
@@ -106,12 +190,14 @@ grow_vertical = 2
 texture = ExtResource("2_4v1wt")
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 424.0
+offset_left = 65.0
 offset_top = 552.0
-offset_right = 777.0
+offset_right = 1218.0
 offset_bottom = 662.0
 theme = ExtResource("3_63qqd")
 text = "WAKE UP"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 layer = -1
@@ -130,7 +216,8 @@ range_layer_min = -1
 range_layer_max = -1
 texture = SubResource("GradientTexture2D_xs5io")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer2/PointLight2D"]
+root_node = NodePath("../../..")
 libraries = {
 &"": SubResource("AnimationLibrary_xs5io")
 }
@@ -143,4 +230,83 @@ position = Vector2(168, 223)
 [node name="ClockTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="Bell2" type="Node2D" parent="."]
+visible = false
+position = Vector2(211, 391)
+
+[node name="BellFx" type="Sprite2D" parent="Bell2"]
+scale = Vector2(0.38208956, 0.38208953)
+texture = ExtResource("6_rmc2i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bell2/BellFx"]
+root_node = NodePath("../../Bell")
+libraries = {
+&"": SubResource("AnimationLibrary_qtgra")
+}
+autoplay = "fx_blink"
+
+[node name="Bell" type="Sprite2D" parent="Bell2"]
+scale = Vector2(0.38208956, 0.38208953)
+texture = ExtResource("6_1wkb2")
+
+[node name="BellArea2D" type="Area2D" parent="Bell2/Bell"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bell2/Bell/BellArea2D"]
+shape = SubResource("CircleShape2D_xjcfv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bell2/Bell"]
+libraries = {
+&"": SubResource("AnimationLibrary_ud8s7")
+}
+autoplay = "rotating"
+
+[node name="Eyes" type="Node2D" parent="."]
+visible = false
+position = Vector2(1060, 245)
+
+[node name="Eye1" type="Sprite2D" parent="Eyes"]
+position = Vector2(0, 110)
+texture = ExtResource("6_f3eur")
+
+[node name="Eye2" type="Sprite2D" parent="Eyes"]
+self_modulate = Color(1, 1, 1, 0.5019608)
+position = Vector2(0, 256)
+texture = ExtResource("7_xjcfv")
+
+[node name="Eye3" type="Sprite2D" parent="Eyes"]
+self_modulate = Color(1, 1, 1, 0.5019608)
+position = Vector2(0, 408)
+texture = ExtResource("8_yxd7n")
+
+[node name="Eye4" type="Sprite2D" parent="Eyes"]
+self_modulate = Color(1, 1, 1, 0.5019608)
+position = Vector2(0, 574)
+texture = ExtResource("9_qtgra")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Eyes"]
+
+[node name="ButtonCook" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(963, 306)
+scale = Vector2(3.574, 3.574)
+texture = ExtResource("11_rmc2i")
+
+[node name="Ha3Clean" type="Sprite2D" parent="ButtonCook"]
+position = Vector2(0.2826233, -4.2384033)
+scale = Vector2(0.11862222, 0.11862222)
+texture = ExtResource("14_rmc2i")
+
+[node name="ButtonBrushT" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(293.99988, 288.00003)
+scale = Vector2(3.5742183, 3.5742183)
+texture = ExtResource("11_rmc2i")
+
+[node name="CookingChef" type="Sprite2D" parent="ButtonBrushT"]
+z_index = 1
+position = Vector2(1.119194, -5.8754196)
+scale = Vector2(0.11572002, 0.11572001)
+texture = ExtResource("14_ud8s7")
+
 [connection signal="timeout" from="ClockTimer" to="." method="_on_clock_timer_timeout"]
+[connection signal="input_event" from="Bell2/Bell/BellArea2D" to="." method="_on_bell_area_2d_input_event"]

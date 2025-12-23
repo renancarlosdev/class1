@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dig0b4h6ogirr"
-path="res://.godot/imported/mezamashidokei.png-b3eee05288b5cd2969b50c54012964be.ctex"
+uid="uid://6602qdmewys7"
+path="res://.godot/imported/button_round_border.png-649d3fdbd3812d07c0a831b7c7425426.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/WakeUp/bedroom/mezamashidokei.png"
-dest_files=["res://.godot/imported/mezamashidokei.png-b3eee05288b5cd2969b50c54012964be.ctex"]
+source_file="res://Levels/WakeUp/Assets/button_round_border.png"
+dest_files=["res://.godot/imported/button_round_border.png-649d3fdbd3812d07c0a831b7c7425426.ctex"]
 
 [params]
 
